@@ -21,7 +21,12 @@ public class SimpleStringBuffer {
     }
 
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (cursor > 0) {
+            String left = text.substring(0, cursor - 1);
+            String right = text.substring(cursor);
+            text = left + right;
+            cursor--;
+        }
     }
 
     public int getCursorPosition() {
