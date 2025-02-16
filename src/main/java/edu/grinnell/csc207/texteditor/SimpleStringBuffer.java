@@ -34,7 +34,9 @@ public class SimpleStringBuffer {
     }
 
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if (cursor > 0) {
+            cursor--;
+        }
     }
 
     public void moveRight() {
