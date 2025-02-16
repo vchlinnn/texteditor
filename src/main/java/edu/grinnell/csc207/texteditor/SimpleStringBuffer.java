@@ -14,7 +14,10 @@ public class SimpleStringBuffer {
     }
 
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        String left = text.substring(0, cursor);
+        String right = text.substring(cursor);
+        text = left + ch + right;
+        cursor++;
     }
 
     public void delete() {
