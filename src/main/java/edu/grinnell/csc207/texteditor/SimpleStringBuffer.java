@@ -46,11 +46,14 @@ public class SimpleStringBuffer {
     }
 
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        return text.length();
     }
 
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        if (i < 0 || i >= text.length()) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        return text.charAt(i);
     }
 
     @Override
