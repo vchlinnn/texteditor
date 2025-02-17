@@ -97,4 +97,14 @@ public class SimpleStringBufferTests {
         assertEquals("ab", buffer.toString());
     }
 
+    @Property
+    public boolean propertyTest(@ForAll @IntRange(min = 0, max = 100) int size,
+            @ForAll char ch) {
+        SimpleStringBuffer buffer = new SimpleStringBuffer();
+        for (int i = 0; i < size; i++) {
+            buffer.insert(ch);
+        }
+        return buffer.getSize() == size && buffer.getChar(0) == ch;
+    }
+
 }
