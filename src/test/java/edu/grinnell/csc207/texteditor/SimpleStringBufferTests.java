@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import net.jqwik.api.Functions;
+// import net.jqwik.api.Functions;
 import net.jqwik.api.Property;
+import net.jqwik.api.*;
+import net.jqwik.api.constraints.IntRange;
 
 public class SimpleStringBufferTests {
     @Test
