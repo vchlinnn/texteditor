@@ -14,11 +14,11 @@ public class SimpleStringBufferTests {
     public void insertUnitTest() {
         SimpleStringBuffer buffer = new SimpleStringBuffer();
         buffer.insert('a');
-        assertEquals("a", buffer.text);
-        assertEquals(1, buffer.cursor);
+        assertEquals("a", buffer.toString());
+        assertEquals(1, buffer.getCursorPosition());
         buffer.insert('b');
-        assertEquals("ab", buffer.text);
-        assertEquals(2, buffer.cursor);
+        assertEquals("ab", buffer.toString());
+        assertEquals(2, buffer.getCursorPosition());
     }
 
     @Test
@@ -27,11 +27,11 @@ public class SimpleStringBufferTests {
         buffer.insert('a');
         buffer.insert('b');
         buffer.delete();
-        assertEquals("a", buffer.text);
-        assertEquals(1, buffer.cursor);
+        assertEquals("a", buffer.toString());
+        assertEquals(1, buffer.getCursorPosition());
         buffer.delete();
-        assertEquals("", buffer.text);
-        assertEquals(0, buffer.cursor);
+        assertEquals("", buffer.toString());
+        assertEquals(0, buffer.getCursorPosition());
     }
 
     @Test
@@ -52,11 +52,11 @@ public class SimpleStringBufferTests {
         buffer.insert('a');
         buffer.insert('b');
         buffer.moveLeft();
-        assertEquals(1, buffer.cursor);
+        assertEquals(1, buffer.getCursorPosition());
         buffer.moveLeft();
-        assertEquals(0, buffer.cursor);
+        assertEquals(0, buffer.getCursorPosition());
         buffer.moveLeft();
-        assertEquals(0, buffer.cursor);
+        assertEquals(0, buffer.getCursorPosition());
     }
 
     @Test
@@ -66,9 +66,9 @@ public class SimpleStringBufferTests {
         buffer.insert('b');
         buffer.moveLeft();
         buffer.moveRight();
-        assertEquals(2, buffer.cursor);
+        assertEquals(2, buffer.getCursorPosition());
         buffer.moveRight();
-        assertEquals(2, buffer.cursor);
+        assertEquals(2, buffer.getCursorPosition());
     }
 
     @Test
