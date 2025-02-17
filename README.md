@@ -1,12 +1,13 @@
 # CSC 207: Text Editor
 
-**Author**: _(TODO: fill me in)_
+**Author**: Linh Vu
 
 ## Resources Used
 
-+ _(TODO: fill me in)_
-+ ...
-+ ...
+- IDE: VSCode
+- Java version 23.0.2
+- Project's instruction: https://osera.cs.grinnell.edu/ttap/data-structures-labs/text-editor.html
+- Jqwik User guide: https://jqwik.net/docs/current/user-guide.html
 
 ## Changelog
 
