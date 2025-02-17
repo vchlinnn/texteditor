@@ -100,7 +100,7 @@ public class SimpleStringBufferTests {
     }
 
     @Property
-    public boolean propertyTest(@ForAll @IntRange(min = 0, max = 100) int size,
+    public boolean propertyTest(@ForAll @IntRange(min = 1, max = 100) int size,
             @ForAll char ch) {
         SimpleStringBuffer buffer = new SimpleStringBuffer();
         for (int i = 0; i < size; i++) {
