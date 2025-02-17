@@ -17,10 +17,27 @@ public class GapBuffer {
     public void insert(char ch) {
         buffer[startGap] = ch;
         startGap++;
+        if (startGap == endGap) {
+            expandBuffer();
+        }
+    }
+
+    public void expandBuffer() {
+        char[] newBuffer = new char[buffer.length * 2];
+        for (int i = 0; i < startGap; i++) {
+            newBuffer[i] = buffer[i];
+        }
+        for (int i = endGap; i < buffer.length; i++) {
+            newBuffer[i + buffer.length] = buffer[i];
+        }
+        buffer = newBuffer;
+        endGap = buffer.length - 1;
     }
 
     public void delete() {
-        startGap--;
+        if (startGap > 0) {
+            startGap--;
+        }
     }
 
     public int getCursorPosition() {
@@ -28,19 +45,23 @@ public class GapBuffer {
     }
 
     public void moveLeft() {
-        buffer[endGap - 1] = buffer[startGap - 1];
-        startGap--;
-        endGap--;
+        if (startGap > 0) {
+            buffer[endGap - 1] = buffer[startGap - 1];
+            startGap--;
+            endGap--;
+        }
     }
 
     public void moveRight() {
-        buffer[startGap] = buffer[endGap];
-        startGap++;
-        endGap++;
+        if (endGap < buffer.length - 1) {
+            buffer[startGap] = buffer[endGap];
+            startGap++;
+            endGap++;
+        }
     }
 
     public int getSize() {
-        return buffer.length - (endGap - startGap);
+        return buffer.length - (endGap + 1 - startGap);
     }
 
     public char getChar(int i) {
