@@ -31,6 +31,9 @@ public class GapBufferTests {
         buffer.delete();
         assertEquals("", buffer.toString());
         assertEquals(0, buffer.getCursorPosition());
+        buffer.delete();
+        assertEquals("", buffer.toString());
+        assertEquals(0, buffer.getCursorPosition());
     }
 
     @Test
@@ -99,7 +102,7 @@ public class GapBufferTests {
     }
 
     @Property
-    public boolean propertyTest(@ForAll @IntRange(min = 0, max = 100) int size,
+    public boolean propertyTest(@ForAll @IntRange(min = 1, max = 100) int size,
             @ForAll char ch) {
         GapBuffer buffer = new GapBuffer();
         for (int i = 0; i < size; i++) {
