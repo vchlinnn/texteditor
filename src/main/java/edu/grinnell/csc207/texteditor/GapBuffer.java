@@ -72,6 +72,14 @@ public class GapBuffer {
     }
 
     public String toString() {
-        return (new String(buffer)).substring(0, startGap) + (new String(buffer)).substring(endGap);
+        if (startGap == 0 && endGap == buffer.length - 1) {
+            return "";
+        } else if (startGap == 0) {
+            return (new String(buffer)).substring(endGap);
+        } else if (endGap == buffer.length - 1) {
+            return (new String(buffer)).substring(0, startGap);
+        } else {
+            return (new String(buffer)).substring(0, startGap) + (new String(buffer)).substring(endGap);
+        }
     }
 }
