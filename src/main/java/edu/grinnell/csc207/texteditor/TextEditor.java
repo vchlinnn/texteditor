@@ -3,13 +3,30 @@ package edu.grinnell.csc207.texteditor;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
 
 /**
  * The driver for the TextEditor Application.
  */
 public class TextEditor {
+
+    public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
+        // renders the entire GapBuffer to the given screen, calling screen.refresh()
+        // to update the display.
+        String content = buf.toString();
+
+        for (int i = 0; i < content.length(); i++) {
+            screen.setCharacter(0, i, TextCharacter.fromCharacter(content.charAt(i))[0]);
+        }
+        screen.refresh();
+    }
 
     /**
      * The main entry point for the TextEditor application.
@@ -23,9 +40,40 @@ public class TextEditor {
             System.exit(1);
         }
 
-        DefaultTerminalFactory factory = new DefaultTerminalFactory();
-        Screen screen = factory.createScreen();
-        String path = args[0];
-        System.out.format("Loading %s...\n", path);
+        Screen screen = new DefaultTerminalFactory().createScreen();
+        GapBuffer buf = new GapBuffer();
+
+        screen.startScreen();
+
+        // System.out.format("Loading %s...\n", path);
+        Path path = Paths.get(args[0]);
+
+        if (Files.exists(path) && Files.isRegularFile(path)) {
+            String fileContent = Files.readString(path);
+            for (int i = 0; i < fileContent.length(); i++) {
+                buf.insert(fileContent.charAt(i));
+            }
+        }
+
+        boolean isRunning = true;
+        while (isRunning) {
+            KeyStroke stroke = screen.readInput();
+            KeyType key = stroke.getKeyType();
+            if (key.equals(KeyType.Character)) {
+                char character = stroke.getCharacter();
+                buf.insert(character);
+            } else if (key.equals(KeyType.ArrowLeft)) {
+                buf.moveLeft();
+            } else if (key.equals(KeyType.ArrowRight)) {
+                buf.moveRight();
+            } else if (key.equals(KeyType.Backspace)) {
+                buf.delete();
+            } else if (key.equals(KeyType.Escape)) {
+                isRunning = false;
+            }
+            drawBuffer(buf, screen);
+        }
+        Files.writeString(path, buf.toString());
+        screen.stopScreen();
     }
 }
