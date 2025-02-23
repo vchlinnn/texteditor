@@ -19,6 +19,9 @@ public class GapBufferTests {
         buffer.insert('b');
         assertEquals("ab", buffer.toString());
         assertEquals(2, buffer.getCursorPosition());
+        buffer.moveLeft();
+        buffer.insert('c');
+        assertEquals("acb", buffer.toString());
     }
 
     @Test
@@ -109,6 +112,6 @@ public class GapBufferTests {
         for (int i = 0; i < size; i++) {
             buffer.insert(ch);
         }
-        return buffer.getSize() == size && buffer.getChar(0) == ch;
+        return buffer.getSize() == size && buffer.getChar(size - 1) == ch;
     }
 }

@@ -12,7 +12,7 @@ public class GapBuffer {
     public GapBuffer() {
         this.buffer = new char[10];
         this.startGap = 0;
-        this.endGap = buffer.length - 1;
+        this.endGap = buffer.length;
     }
 
     public void insert(char ch) {
@@ -32,7 +32,7 @@ public class GapBuffer {
             newBuffer[i + buffer.length] = buffer[i];
         }
         buffer = newBuffer;
-        endGap = buffer.length - 1;
+        endGap = buffer.length;
     }
 
     public void delete() {
@@ -54,7 +54,7 @@ public class GapBuffer {
     }
 
     public void moveRight() {
-        if (endGap < buffer.length - 1) {
+        if (endGap < buffer.length) {
             buffer[startGap] = buffer[endGap];
             startGap++;
             endGap++;
@@ -62,14 +62,18 @@ public class GapBuffer {
     }
 
     public int getSize() {
-        return buffer.length - (endGap + 1 - startGap);
+        return startGap + (buffer.length - endGap);
     }
 
     public char getChar(int i) {
         if (i < 0 || i >= buffer.length) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
-        return buffer[i];
+        if (i < startGap) {
+            return buffer[i];
+        } else {
+            return buffer[i + (endGap - startGap)];
+        }
     }
 
     public String toString() {
@@ -77,7 +81,7 @@ public class GapBuffer {
             return "";
         } else if (startGap == 0) {
             return (new String(buffer)).substring(endGap);
-        } else if (endGap == buffer.length - 1) {
+        } else if (endGap == buffer.length) {
             return (new String(buffer)).substring(0, startGap);
         } else {
             return (new String(buffer)).substring(0, startGap) + (new String(buffer)).substring(endGap);
