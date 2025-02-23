@@ -17,11 +17,17 @@ import com.googlecode.lanterna.screen.Screen;
  */
 public class TextEditor {
 
+    /**
+     * Renders the contents of a GapBuffer to a Screen.
+     *
+     * @param buf    the GapBuffer to render.
+     * @param screen the Screen to render to.
+     * @throws IOException
+     */
     public static void drawBuffer(GapBuffer buf, Screen screen) throws IOException {
         // renders the entire GapBuffer to the given screen, calling screen.refresh()
         // to update the display.
         String content = buf.toString();
-
         for (int i = 0; i < content.length(); i++) {
             screen.setCharacter(i, 0, TextCharacter.fromCharacter(content.charAt(i))[0]);
         }
@@ -41,8 +47,6 @@ public class TextEditor {
         }
 
         GapBuffer buf = new GapBuffer();
-
-        // System.out.format("Loading %s...\n", path);
         Path path = Paths.get(args[0]);
 
         if (Files.exists(path) && Files.isRegularFile(path)) {
@@ -75,6 +79,5 @@ public class TextEditor {
         }
         Files.writeString(path, buf.toString());
         screen.stopScreen();
-        // System.exit(1);
     }
 }
