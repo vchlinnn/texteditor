@@ -125,7 +125,8 @@ public class GapBuffer {
         } else if (endGap == buffer.length) {
             return (new String(buffer)).substring(0, startGap);
         } else {
-            return (new String(buffer)).substring(0, startGap) +
+            return (new String(buffer)).substring(0, startGap)
+                    +
                     (new String(buffer)).substring(endGap);
         }
     }
