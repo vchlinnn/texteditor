@@ -23,7 +23,7 @@ public class TextEditor {
         String content = buf.toString();
 
         for (int i = 0; i < content.length(); i++) {
-            screen.setCharacter(0, i, TextCharacter.fromCharacter(content.charAt(i))[0]);
+            screen.setCharacter(i, 0, TextCharacter.fromCharacter(content.charAt(i))[0]);
         }
         screen.refresh();
     }
@@ -40,10 +40,7 @@ public class TextEditor {
             System.exit(1);
         }
 
-        Screen screen = new DefaultTerminalFactory().createScreen();
         GapBuffer buf = new GapBuffer();
-
-        screen.startScreen();
 
         // System.out.format("Loading %s...\n", path);
         Path path = Paths.get(args[0]);
@@ -55,8 +52,12 @@ public class TextEditor {
             }
         }
 
+        Screen screen = new DefaultTerminalFactory().createScreen();
+        screen.startScreen();
+
         boolean isRunning = true;
         while (isRunning) {
+            drawBuffer(buf, screen);
             KeyStroke stroke = screen.readInput();
             KeyType key = stroke.getKeyType();
             if (key.equals(KeyType.Character)) {
@@ -71,7 +72,6 @@ public class TextEditor {
             } else if (key.equals(KeyType.Escape)) {
                 isRunning = false;
             }
-            drawBuffer(buf, screen);
         }
         Files.writeString(path, buf.toString());
         screen.stopScreen();
