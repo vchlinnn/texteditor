@@ -38,6 +38,11 @@ public class GapBufferTests {
         buffer.delete();
         assertEquals("", buffer.toString());
         assertEquals(0, buffer.getCursorPosition());
+        buffer.insert('a');
+        buffer.insert('b');
+        buffer.moveLeft();
+        buffer.delete();
+        assertEquals("b", buffer.toString());
     }
 
     @Test
