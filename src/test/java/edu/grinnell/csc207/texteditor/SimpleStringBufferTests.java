@@ -10,6 +10,7 @@ import net.jqwik.api.*;
 import net.jqwik.api.constraints.IntRange;
 
 public class SimpleStringBufferTests {
+
     @Test
     public void insertUnitTest() {
         SimpleStringBuffer buffer = new SimpleStringBuffer();

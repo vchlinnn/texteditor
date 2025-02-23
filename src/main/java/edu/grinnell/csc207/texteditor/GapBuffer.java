@@ -4,6 +4,7 @@ package edu.grinnell.csc207.texteditor;
  * A gap buffer-based implementation of a text buffer.
  */
 public class GapBuffer {
+
     char[] buffer;
     int startGap;
     int endGap;

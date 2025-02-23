@@ -9,6 +9,7 @@ import net.jqwik.api.Property;
 import net.jqwik.api.constraints.IntRange;
 
 public class GapBufferTests {
+
     @Test
     public void insertUnitTest() {
         GapBuffer buffer = new GapBuffer();

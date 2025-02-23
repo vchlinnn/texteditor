@@ -30,7 +30,7 @@ public class TextEditor {
 
     /**
      * The main entry point for the TextEditor application.
-     * 
+     *
      * @param args command-line arguments.
      * @throws IOException
      */
@@ -78,5 +78,3 @@ public class TextEditor {
         // System.exit(1);
     }
 }
-
-
