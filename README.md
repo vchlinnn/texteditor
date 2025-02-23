@@ -24,6 +24,7 @@
 - Implement File Input/Output in TextEditor
 - Fix format for good styling
 - Debug failed Gradescope test cases in GapBuffer by changing endGap index
+- Update README with changelog
 
 ## Runtime analysis
 
