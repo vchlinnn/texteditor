@@ -11,19 +11,19 @@
 
 ## Changelog
 
-\_Implement SimpleStringBuffer with constructor and basic methods*
-\_Add unit tests and a property test for SimpleStringBuffer*
-\_Add SimpleStringBuffer's insert runtime analysis*
-\_Implement GapBuffer with constructor and basic methods*
-\_Refactor direct property access to use getter methods for both buffers*
-\_Add GapBuffer's unit tests and property test based on SimpleStringBuffer*
-\_Debug failed GapBuffer's unit tests by fixing out of bound errors and add edge cases*
-\_Add expandBuffer method for GapBuffer*
-\_Create screen object in TextEditor*
-\_Implement drawBuffer function and KeyStroke cases in TextEditor*
-\_Implement File Input/Output in TextEditor*
-\_Fix format for good styling*
-\_Debug failed Gradescope test cases in GapBuffer by changing endGap index\*
+- Implement SimpleStringBuffer with constructor and basic methods
+- Add unit tests and a property test for SimpleStringBuffer
+- Add SimpleStringBuffer's insert runtime analysis
+- Implement GapBuffer with constructor and basic methods
+- Refactor direct property access to use getter methods for both buffers
+- Add GapBuffer's unit tests and property test based on SimpleStringBuffer
+- Debug failed GapBuffer's unit tests by fixing out of bound errors and add edge cases
+- Add expandBuffer method for GapBuffer
+- Create screen object in TextEditor
+- Implement drawBuffer function and KeyStroke cases in TextEditor
+- Implement File Input/Output in TextEditor
+- Fix format for good styling
+- Debug failed Gradescope test cases in GapBuffer by changing endGap index
 
 ## Runtime analysis
 
