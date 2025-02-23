@@ -75,5 +75,8 @@ public class TextEditor {
         }
         Files.writeString(path, buf.toString());
         screen.stopScreen();
+        // System.exit(1);
     }
 }
+
+
